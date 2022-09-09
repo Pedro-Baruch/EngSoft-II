@@ -22,6 +22,7 @@
     Teste feito no código no arquivo index.ts nas funções testeSacar() e testeTransferir().
 
 ### Questão 05
-    Ocorreu o lançamento da exceção, e foi exibido o erro quando o o valor foi mais que o saldo, fazendo com que o programa fosse interrompido.
+    Ocorreu o lançamento da exceção, e foi exibido o erro quando o o valor foi mais que o saldo, 
+    fazendo com que o programa fosse interrompido.
 
     Teste feito no código no arquivo index.ts na função main().
