@@ -18,7 +18,11 @@ class Conta {
 	
 	
 	sacar(valor: number): void {
-		this._saldo = this._saldo - valor;
+		if(this._saldo < valor){
+			throw new Error ('Saldo insuficiente.')
+		}
+
+		this._saldo -= valor;
 	}
 
 	depositar(valor: number): void {
@@ -26,8 +30,12 @@ class Conta {
 	}
 
 	transferir(contaDestino: Conta, valor: number): void {
-		this.sacar(valor);
-		contaDestino.depositar(valor);
+		if(this._saldo < valor){
+			throw new Error ('Saldo insuficiente.')
+		}
+
+		this._saldo -= valor
+		contaDestino._saldo += valor
 	}
 }
 
@@ -127,11 +135,42 @@ class Banco {
 
 }
 
-function main(){
+function sacar(){
 
 	const conta01: Conta = new Conta('1',50)
 
-	console.log(conta01.saldo)
+	conta01.sacar(30)
+	//A conta não tem saldo suficiente então é retornado um erro comunicando a falta de saldo da conta e a operação se encerra sem alteração no saldo
+
+	console.log(`Sacar:\nconta 01: R$ ${conta01.saldo},00\n`)
+}
+
+sacar()
+
+function transferir(){
+
+	const conta01: Conta = new Conta('1',50)
+	const conta02: Conta = new Conta('2',50)
+
+	conta01.transferir(conta02,30)
+	//A conta não tem saldo suficiente então é retornado um erro comunicando a falta de saldo da conta e a operação se encerra sem alteração no saldo
+
+	console.log(`Transferir\nconta 01: R$ ${conta01.saldo},00\nconta 02: R$ ${conta02.saldo},00\n`)
+}
+
+transferir()
+
+function main(){
+
+	const banco: Banco = new Banco()
+
+	banco.inserir(new Conta('1',100))
+	banco.inserir(new Conta('2',110))
+	banco.inserir(new Conta('3',120))
+	banco.inserir(new Conta('4',130))
+	banco.inserir(new Conta('5',140))
+
+	console.log(banco.consultar('1'),banco.consultar('2'))
 }
 
 main()
