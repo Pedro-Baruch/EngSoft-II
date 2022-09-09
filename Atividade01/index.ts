@@ -135,30 +135,28 @@ class Banco {
 
 }
 
-function sacar(){
+function testeSacar(){
 
 	const conta01: Conta = new Conta('1',50)
 
-	conta01.sacar(30)
-	//A conta não tem saldo suficiente então é retornado um erro comunicando a falta de saldo da conta e a operação se encerra sem alteração no saldo
+	conta01.sacar(100)
 
 	console.log(`Sacar:\nconta 01: R$ ${conta01.saldo},00\n`)
 }
 
-sacar()
+// testeSacar()
 
-function transferir(){
+function testeTransferir(){
 
 	const conta01: Conta = new Conta('1',50)
 	const conta02: Conta = new Conta('2',50)
 
-	conta01.transferir(conta02,30)
-	//A conta não tem saldo suficiente então é retornado um erro comunicando a falta de saldo da conta e a operação se encerra sem alteração no saldo
+	conta01.transferir(conta02,100)
 
 	console.log(`Transferir\nconta 01: R$ ${conta01.saldo},00\nconta 02: R$ ${conta02.saldo},00\n`)
 }
 
-transferir()
+// testeTransferir()
 
 function main(){
 
@@ -166,9 +164,8 @@ function main(){
 
 	banco.inserir(new Conta('1',100))
 	banco.inserir(new Conta('2',110))
-	banco.inserir(new Conta('3',120))
-	banco.inserir(new Conta('4',130))
-	banco.inserir(new Conta('5',140))
+
+	banco.transferir('1','2',200)
 
 	console.log(banco.consultar('1'),banco.consultar('2'))
 }
