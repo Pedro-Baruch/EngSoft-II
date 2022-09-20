@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:banco": "ts-node-dev --respawn --clear ./banco/main_banco.ts",
-    "dev:blog": "ts-node-dev --respawn --clear ./blog/main_blog.ts"
+    "dev": "ts-node-dev --respawn --clear ./banco/main_banco.ts"
   },
   "author": "",
   "license": "ISC",

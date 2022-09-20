@@ -34,11 +34,18 @@ class ContaExistenteError extends AplicacaoError {
     }
 }
 
+class DadosInválidosError extends AplicacaoError {
+    constructor(message : string) {
+        super(message)
+    }
+}
+
 export {
     AplicacaoError,
     SaldoInsuficienteError, 
     ContaInexistenteError, 
     ValorInvalidoError, 
     PoupancaInvalidaError,
-    ContaExistenteError
+    ContaExistenteError,
+    DadosInválidosError
 }

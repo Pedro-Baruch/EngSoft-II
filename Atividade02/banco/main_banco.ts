@@ -40,16 +40,32 @@ function main(){
                     console.log(banco.consultar(opcaoConsultar))
                     break
                 case '3':
+                    let opcaoAlterar : string = prompt('Insira o número da conta: ')
+                    banco.alterar(banco.consultar(opcaoAlterar))
                     break
                 case '4':
+                    let opcaoExcluir : string = prompt('Insira o número da conta: ')
+                    banco.excluir(opcaoExcluir)
                     break
                 case '5':
+                    let numeroDepositar : string = prompt('Insira o número da conta: ')
+                    let valorDepositar : number = prompt('Insira o valor que deseja depositar: ')
+                    banco.depositar(numeroDepositar,valorDepositar)
                     break
                 case '6':
+                    let numeroSacar : string = prompt('Insira o número da conta: ')
+                    let valorSacar : number = prompt('Insira o valor que deseja sacar: ')
+                    banco.sacar(numeroSacar,valorSacar)
                     break  
                 case '7':
+                    let numeroDebito : string = prompt('Insira o número da conta debito: ')
+                    let numeroCredito : string = prompt('Insira o número da conta crédito: ')
+                    let valorTransfeir : number = prompt('Insira o valor que deseja transferir: ')
+                    banco.transferir(numeroDebito,numeroCredito,valorTransfeir)
                     break 
                 case '8':
+                    let numeroJuros : string = prompt('Insira o número da conta poupança: ')
+                    banco.renderJuros(numeroJuros)
                     break 
                 case '9':
                     opcao = caseOpcao
