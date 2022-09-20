@@ -26,46 +26,54 @@ function main(){
                             let jurosPoupanca : number = prompt('Juros: ')
                             
                             banco.inserir(new Poupanca(numeroPoupanca, valorPoupanca, jurosPoupanca))
+                            console.log('Conta adicionada: ',banco.consultar(numeroPoupanca))
                             break
                         case '2':
                             let numeroBasico : string = prompt('Número: ')
                             let valorBasico : number = prompt('Valor: ')
                             
                             banco.inserir(new Conta(numeroBasico, valorBasico))
+                            console.log('Conta adicionada: ',banco.consultar(numeroBasico))
                             break
                     }
                     break
                 case '2':
                     let opcaoConsultar : string = prompt('Insira o número da conta: ')
-                    console.log(banco.consultar(opcaoConsultar))
+                    console.log('Conta buscada',banco.consultar(opcaoConsultar))
                     break
                 case '3':
-                    let opcaoAlterar : string = prompt('Insira o número da conta: ')
-                    banco.alterar(banco.consultar(opcaoAlterar))
+                    let numeroAlterar : string = prompt('Insira o número da conta: ')
+                    banco.alterar(banco.consultar(numeroAlterar))
+                    console.log('Conta atualizada',banco.consultar(numeroAlterar))
                     break
                 case '4':
                     let opcaoExcluir : string = prompt('Insira o número da conta: ')
                     banco.excluir(opcaoExcluir)
+                    console.log('Conta Excluida com sucesso!')
                     break
                 case '5':
                     let numeroDepositar : string = prompt('Insira o número da conta: ')
                     let valorDepositar : number = prompt('Insira o valor que deseja depositar: ')
                     banco.depositar(numeroDepositar,valorDepositar)
+                    console.log('Conta atualizada: ',banco.consultar(numeroDepositar))
                     break
                 case '6':
                     let numeroSacar : string = prompt('Insira o número da conta: ')
                     let valorSacar : number = prompt('Insira o valor que deseja sacar: ')
                     banco.sacar(numeroSacar,valorSacar)
+                    console.log('Conta atualizada: ',banco.consultar(numeroSacar))
                     break  
                 case '7':
                     let numeroDebito : string = prompt('Insira o número da conta debito: ')
                     let numeroCredito : string = prompt('Insira o número da conta crédito: ')
                     let valorTransfeir : number = prompt('Insira o valor que deseja transferir: ')
-                    banco.transferir(numeroDebito,numeroCredito,valorTransfeir)
+                    banco.transferir(numeroDebito,numeroCredito,Number(valorTransfeir))
+                    console.log('Conta credito: ',banco.consultar(numeroCredito),'\nConta debito: ',banco.consultar(numeroDebito))
                     break 
                 case '8':
                     let numeroJuros : string = prompt('Insira o número da conta poupança: ')
                     banco.renderJuros(numeroJuros)
+                    console.log('Conta atualizada',banco.consultar(numeroJuros))
                     break 
                 case '9':
                     opcao = caseOpcao

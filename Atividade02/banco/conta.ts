@@ -35,7 +35,7 @@ export class Conta {
 
 	depositar(valor: number): void {
 		this.validarValor(valor)
-		this._saldo = this._saldo + valor;
+		this._saldo += valor;
 	}
 
 	transferir(contaDestino: Conta, valor: number): void {
