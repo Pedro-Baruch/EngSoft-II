@@ -1,12 +1,23 @@
 import { Conta } from "../banco/conta";
 import { Poupanca } from "../banco/poupanca";
-import { ContaInexistenteError, PoupancaInvalidaError } from "./banco_error";
+import { ContaExistenteError, ContaInexistenteError, PoupancaInvalidaError } from "./banco_error";
 
 export class Banco {
 	private _contas: Conta[] = [];
 	
 	inserir(conta: Conta): void {
-		this._contas.push(conta);
+		let a : boolean = true
+		
+		try {
+			let contaConsultada = this.consultar(conta.numero);
+			a = false
+		} catch (error) {
+			this._contas.push(conta)
+		}
+
+		if(a == false){
+			throw new ContaExistenteError('Conta já existente')
+		}
 	}
 
 	consultar(numero: String): Conta {

@@ -28,10 +28,17 @@ class PoupancaInvalidaError extends AplicacaoError {
     }
 }
 
+class ContaExistenteError extends AplicacaoError {
+    constructor(message : string) {
+        super(message)
+    }
+}
+
 export {
     AplicacaoError,
     SaldoInsuficienteError, 
     ContaInexistenteError, 
     ValorInvalidoError, 
-    PoupancaInvalidaError
+    PoupancaInvalidaError,
+    ContaExistenteError
 }
