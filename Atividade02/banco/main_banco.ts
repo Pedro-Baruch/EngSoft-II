@@ -67,7 +67,7 @@ function main(){
                     let numeroDebito : string = prompt('Insira o número da conta debito: ')
                     let numeroCredito : string = prompt('Insira o número da conta crédito: ')
                     let valorTransfeir : number = prompt('Insira o valor que deseja transferir: ')
-                    banco.transferir(numeroDebito,numeroCredito,Number(valorTransfeir))
+                    banco.transferir(numeroDebito,numeroCredito,valorTransfeir)
                     console.log('Conta credito: ',banco.consultar(numeroCredito),'\nConta debito: ',banco.consultar(numeroDebito))
                     break 
                 case '8':

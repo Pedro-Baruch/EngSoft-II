@@ -17,7 +17,7 @@ export class Conta {
 		return this._saldo;
 	}
 	
-	private validarValor(valor: number) {
+	private validarValor(valor: number) {	
 		if(valor <= 0){
 			throw new ValorInvalidoError('Valor inválido.')
 		}

@@ -5,7 +5,7 @@ import { ContaExistenteError, ContaInexistenteError, DadosInválidosError, Poupa
 export class Banco {
 	private _contas: Conta[] = [];
 	
-	private verificarEntradas(numero: String){
+	private verificarEntradasNum(numero: String){
 		if(numero == null || numero	== '' || numero == undefined){
 			throw new DadosInválidosError('Dados inaceitáveis.')
 		}
@@ -13,9 +13,9 @@ export class Banco {
 
 	inserir(conta: Conta): void {
 		let a : boolean = true
+				
+		this.verificarEntradasNum(conta.numero)
 		
-		this.verificarEntradas(conta.numero)
-
 		try {
 			let contaConsultada = this.consultar(conta.numero);
 			a = false
@@ -31,7 +31,7 @@ export class Banco {
 	consultar(numero: String): Conta {
 		let contaConsultada!: Conta;
 		
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
 
         for (let conta of this._contas) {
 			if (conta.numero == numero) {
@@ -50,7 +50,7 @@ export class Banco {
 	private consultarPorIndice(numero: String): number {
 		let indice: number = -1;
 		
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
 
 		for (let i: number = 0; i < this._contas.length; i++) {
 			if (this._contas[i].numero == numero) {
@@ -67,13 +67,13 @@ export class Banco {
 	}
 
 	alterar(conta: Conta): void {
-		this.verificarEntradas(conta.numero)
+		this.verificarEntradasNum(conta.numero)
 		let indice: number = this.consultarPorIndice(conta.numero);
 		this._contas[indice] = conta;
 	}
 
 	excluir(numero: string): void {
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
 		let indice: number = this.consultarPorIndice(numero);
 		
 
@@ -85,22 +85,22 @@ export class Banco {
 	}
 
 	depositar(numero: String, valor: number): void {
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
 		let contaConsultada = this.consultar(numero);
 
 		contaConsultada.depositar(valor);
 	}
 
     sacar(numero: String, valor: number): void {
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
         let contaConsultada = this.consultar(numero);
 
     	contaConsultada.sacar(valor);
     }
 
     transferir(numeroDebito: string, numeroCredito: string, valor: number){
-        this.verificarEntradas(numeroCredito)
-		this.verificarEntradas(numeroDebito)
+        this.verificarEntradasNum(numeroCredito)
+		this.verificarEntradasNum(numeroDebito)
 		
 		let contaCredito: Conta = this.consultar(numeroCredito);
         let contaDebito: Conta = this.consultar(numeroDebito);
@@ -126,7 +126,7 @@ export class Banco {
     }
 
 	renderJuros(numero: String) {
-		this.verificarEntradas(numero)
+		this.verificarEntradasNum(numero)
 		let contaConsultada = this.consultar(numero);
 
 		if (contaConsultada instanceof Poupanca) {
