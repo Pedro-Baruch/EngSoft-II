@@ -39,10 +39,18 @@ class Funcionario extends Pessoa {
     }
 
     public primeiraParcela(): number {
+        if(this.salario <= 0){
+            throw new Error("Salario negativo")
+        }
+    
         return this._salario * 0.6
     }
 
     public segundaParcela(): number {
+        if(this.salario <= 0){
+            throw new Error("Salario negativo")
+        }
+        
         return this._salario * 0.4
     }
 }
@@ -60,6 +68,10 @@ class Professor extends Funcionario {
     }
 
     public override primeiraParcela(): number {
+        if(this.salario <= 0){
+            throw new Error("Salario negativo")
+        }
+        
         return this.salario
     }
 
