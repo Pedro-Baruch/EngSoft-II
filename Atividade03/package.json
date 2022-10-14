@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "empregado":"ts-node-dev --respawn --clear empregado.ts",
+    "pessoa":"ts-node-dev --respawn --clear pessoa.ts",
     "dev": "ts-node-dev --respawn --clear index.ts"
   },
   "author": "",

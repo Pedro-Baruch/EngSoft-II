@@ -1,14 +1,14 @@
 export class Empregado{
     _salario: number = 500;
 
-    calcularSalario(): number{
+    public calcularSalario(): number{
         return this._salario    
     }
 }
 
 export class Diarista extends Empregado{
 
-    calcularSalario(): number{
+    public override calcularSalario(): number{
         const salarioCalculado = this.calcularSalario() / 30
         
         return salarioCalculado
@@ -17,7 +17,7 @@ export class Diarista extends Empregado{
 
 export class Horista extends Empregado{
 
-    calcularSalario(): number{
+    public override calcularSalario(): number{
         const salarioCalculado = this.calcularSalario() / 24
         
         return salarioCalculado
@@ -33,3 +33,5 @@ const main = () => {
     console.log(diarista.calcularSalario())
     console.log(horista.calcularSalario())
 }
+
+main()
