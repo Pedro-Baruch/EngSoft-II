@@ -24,7 +24,7 @@ export class Banco {
 		}
 
 		if(a == false){
-			throw new ContaExistenteError('Conta já existente')
+			throw new ContaExistenteError('Conta existente')
 		}
 	}
 

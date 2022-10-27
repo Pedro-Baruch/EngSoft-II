@@ -1,10 +1,10 @@
-import { application } from "express"
 import { Banco } from "./banco"
 import { AplicacaoError, ContaExistenteError, ContaInexistenteError, PoupancaInvalidaError, SaldoInsuficienteError, ValorInvalidoError } from "./banco_error"
 import { Conta } from "./conta"
 import { Poupanca } from "./poupanca"
-const prompt = require('prompt-sync')()
+import promptSync from 'prompt-sync';
 
+const prompt = promptSync()
 
 function main(){
     const banco : Banco = new Banco()
@@ -22,15 +22,15 @@ function main(){
                     switch (opcaoInserir){
                         case '1':
                             let numeroPoupanca : string = prompt('Número: ')
-                            let valorPoupanca : number = prompt('Valor: ')
-                            let jurosPoupanca : number = prompt('Juros: ')
+                            let valorPoupanca : number = Number(prompt('Valor: '))
+                            let jurosPoupanca : number = Number(prompt('Juros: '))
                             
                             banco.inserir(new Poupanca(numeroPoupanca, valorPoupanca, jurosPoupanca))
                             console.log('Conta adicionada: ',banco.consultar(numeroPoupanca))
                             break
                         case '2':
                             let numeroBasico : string = prompt('Número: ')
-                            let valorBasico : number = prompt('Valor: ')
+                            let valorBasico : number = Number(prompt('Valor: '))
                             
                             banco.inserir(new Conta(numeroBasico, valorBasico))
                             console.log('Conta adicionada: ',banco.consultar(numeroBasico))
@@ -53,20 +53,20 @@ function main(){
                     break
                 case '5':
                     let numeroDepositar : string = prompt('Insira o número da conta: ')
-                    let valorDepositar : number = prompt('Insira o valor que deseja depositar: ')
+                    let valorDepositar : number = Number(prompt('Insira o valor que deseja depositar: '))
                     banco.depositar(numeroDepositar,valorDepositar)
                     console.log('Conta atualizada: ',banco.consultar(numeroDepositar))
                     break
                 case '6':
                     let numeroSacar : string = prompt('Insira o número da conta: ')
-                    let valorSacar : number = prompt('Insira o valor que deseja sacar: ')
+                    let valorSacar : number = Number(prompt('Insira o valor que deseja sacar: '))
                     banco.sacar(numeroSacar,valorSacar)
                     console.log('Conta atualizada: ',banco.consultar(numeroSacar))
                     break  
                 case '7':
                     let numeroDebito : string = prompt('Insira o número da conta debito: ')
                     let numeroCredito : string = prompt('Insira o número da conta crédito: ')
-                    let valorTransfeir : number = prompt('Insira o valor que deseja transferir: ')
+                    let valorTransfeir : number = Number(prompt('Insira o valor que deseja transferir: '))
                     banco.transferir(numeroDebito,numeroCredito,valorTransfeir)
                     console.log('Conta credito: ',banco.consultar(numeroCredito),'\nConta debito: ',banco.consultar(numeroDebito))
                     break 
@@ -104,5 +104,4 @@ function main(){
 
     console.log('Aplicação encerrada!!!')
 }
-
-main()
+ main()
