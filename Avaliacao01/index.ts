@@ -74,22 +74,22 @@ class CenarioDeBatalha{
 
         for(let i: number = 0; i < defensivel01.length; i++){
             if(defensivel01[i].estaEliminado() == false){
-                tropasVivas01 = tropasVivas01 + 1
+                tropasVivas01 += 1
             }
         }
 
         for(let i: number = 0; i < defensivel02.length; i++){
             if(defensivel01[i].estaEliminado() == false){
-                tropasVivas02 = tropasVivas02 + 1
+                tropasVivas02 += 1
             }
         }
 
-        if(tropasVivas01 == tropasVivas02){
-            return "Empate"
-        }else if(tropasVivas01 > tropasVivas02){
+        if(tropasVivas01 > tropasVivas02){
             return "Player 01 ganhou"
-        }else{
+        }else if(tropasVivas02 > tropasVivas01){
             return "Player 02 ganhou"
+        }else{
+            return "Empate"
         }
     }
 }
@@ -137,18 +137,49 @@ const main = () => {
         Soldado02.atacar(baseMilitarSul)
         Soldado03.atacar(baseMilitarSul)
 
-        console.log(cenario.avaliar(player01, player02))
-        console.log("Player 01")
-        console.table(player01)
-        console.log("Player 02")
-        console.table(player02)
+        // turno player 02
+        Sniper01.atacar(Soldado01)
+        Sniper02.atacar(baseMilitarNorte)
+        Sniper03.atacar(Soldado03)
+
+        // turno player 01
+        Soldado01.atacar(Sniper03)
+        Soldado02.atacar(baseMilitarSul)
+        Soldado03.atacar(baseMilitarSul)
+
+        // turno player 02
+        Sniper01.atacar(Soldado01)
+        Sniper02.atacar(baseMilitarNorte)
+        Sniper03.atacar(Soldado03)
+
+        // turno player 01
+        Soldado01.atacar(Sniper03)
+        Soldado02.atacar(baseMilitarSul)
+        Soldado03.atacar(baseMilitarSul)
+
+        // turno player 02
+        Sniper01.atacar(Soldado01)
+        Sniper02.atacar(baseMilitarNorte)
+        Sniper03.atacar(Soldado03)
+
+        // turno player 01
+        Soldado01.atacar(Sniper03)
+        Soldado02.atacar(baseMilitarSul)
+        Soldado03.atacar(baseMilitarSul)
+
     } catch (error) {
         if( error instanceof jaEmliminadoExcption){
             console.log(error.message)
         }
     }
 
-    
+    console.log(cenario.avaliar(player01,player02))
+
+    console.log("Player01")
+    console.table(player01)
+
+    console.log("Player02")
+    console.table(player02)
 }
 
 main()
